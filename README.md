@@ -20,13 +20,11 @@ Random number games with random.org API using React-native
 
 1. File app.android
 ![indexandroid](https://user-images.githubusercontent.com/32328841/32362824-18af0f90-c03a-11e7-9bf3-464d43f8dd3e.png)
-2.
+2. Feth API
 ![gamerandomfile1](https://user-images.githubusercontent.com/32328841/32362825-18e11d96-c03a-11e7-8922-e9e0bdebd62b.png)
-3
-![gamerandomfile2](https://user-images.githubusercontent.com/32328841/32362826-191de852-c03a-11e7-9ad4-c57b7e7749fc.png)
-4
+3.
 ![gamerandomfile3](https://user-images.githubusercontent.com/32328841/32362822-18423848-c03a-11e7-840b-1fddbcba8557.png)
-5
+4.
 ![gamerandomfile4](https://user-images.githubusercontent.com/32328841/32362823-187c31ec-c03a-11e7-83f6-377f1068a5f1.png)
 
 
