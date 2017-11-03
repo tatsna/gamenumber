@@ -36,7 +36,7 @@ Random number games with random.org API using React-native
 1. Register Random.org to bring the API
 2. cd into folder gamerandom
 3. npm start   <-- start npm
-4. react-native runandroid  <-- run application 
+4. react-native run-android  <-- run application 
 
 ## Hope that helps. Thx You. 
 
