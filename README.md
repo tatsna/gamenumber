@@ -32,4 +32,12 @@ Random number games with random.org API using React-native
 ![game1](https://user-images.githubusercontent.com/32328841/32364102-effa2ad8-c040-11e7-86a1-ba8145c52caf.png)
 ![game2](https://user-images.githubusercontent.com/32328841/32364104-f03f60d0-c040-11e7-93bf-b06b2977164d.png)
 
+### How to install APP
+1. Register Random.org to bring the API
+2. cd into folder gamerandom
+3. npm start   <-- start npm
+4. react-native runandroid  <-- run application 
 
+## Hope that helps. Thx You. 
+
+## tatsna  pradakorn
