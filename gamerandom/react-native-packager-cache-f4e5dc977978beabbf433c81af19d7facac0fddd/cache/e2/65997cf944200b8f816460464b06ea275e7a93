@@ -1,0 +1,192 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Project2/Home.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNavigation = require('react-navigation');
+
+var Home = function (_Component) {
+    babelHelpers.inherits(Home, _Component);
+
+    function Home() {
+        babelHelpers.classCallCheck(this, Home);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+        var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                return r1 !== r2;
+            } });
+        _this.state = {
+            userDataSource: ds,
+            refreshing: false
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(Home, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.fetchusers();
+        }
+    }, {
+        key: 'fetchusers',
+        value: function fetchusers() {
+            var _this2 = this;
+
+            this.setState({ refreshing: true });
+            fetch('http://webbord.com/index.php/main_controller/json/').then(function (response) {
+                return response.json();
+            }).then(function (response) {
+                _this2.setState({
+                    userDataSource: _this2.state.userDataSource.cloneWithRows(response.rs),
+                    refreshing: false
+                });
+            });
+        }
+    }, {
+        key: 'renderRow',
+        value: function renderRow(from) {
+            var navigate = this.props.navigation.navigate;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.row, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 42
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.rowText, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 43
+                        }
+                    },
+                    ' ',
+                    from.title
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.rowText, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 45
+                        }
+                    },
+                    ' ',
+                    from.content
+                ),
+                _react2.default.createElement(_reactNative.Button, {
+                    onPress: function onPress() {
+                        return navigate('View', { id: from.id });
+                    },
+                    title: '\u0E2D\u0E48\u0E32\u0E19\u0E01\u0E23\u0E30\u0E17\u0E39\u0E49',
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 46
+                    }
+                })
+            );
+        }
+    }, {
+        key: 'buttonPress',
+        value: function buttonPress() {
+            var navigate = this.props.navigation.navigate;
+
+            navigate('Post');
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 62
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.TouchableHighlight,
+                    {
+                        style: styles.botton,
+                        onPress: function onPress() {
+                            return _this3.buttonPress();
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 63
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 67
+                            }
+                        },
+                        ' \u0E40\u0E1E\u0E34\u0E48\u0E21\u0E01\u0E23\u0E30\u0E17\u0E39\u0E49 '
+                    )
+                ),
+                _react2.default.createElement(_reactNative.ListView, {
+                    refreshControl: _react2.default.createElement(_reactNative.RefreshControl, {
+                        refreshing: this.state.refreshing,
+                        onRefresh: this.fetchusers.bind(this),
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 71
+                        }
+                    }),
+                    dataSource: this.state.userDataSource,
+                    renderRow: this.renderRow.bind(this),
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 69
+                    }
+                })
+            );
+        }
+    }]);
+    return Home;
+}(_react.Component);
+
+Home.navigationOptions = {
+    title: "รายชื่อกระทู้"
+};
+exports.default = Home;
+
+
+var styles = _reactNative.StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        padding: 10,
+        backgroundColor: '#f4f4f4',
+        marginBottom: 3
+
+    },
+    rowText: {
+        flex: 1,
+        fontSize: 20
+
+    },
+
+    botton: {
+        backgroundColor: 'blue',
+        paddingTop: 15,
+        paddingBottom: 15
+    }
+
+});
+
+_reactNative.AppRegistry.registerComponent('Home', function () {
+    return Home;
+});

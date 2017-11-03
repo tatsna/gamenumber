@@ -1,0 +1,228 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Storage/Storage.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var Storage = function (_Component) {
+    babelHelpers.inherits(Storage, _Component);
+
+    function Storage() {
+        babelHelpers.classCallCheck(this, Storage);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Storage.__proto__ || Object.getPrototypeOf(Storage)).call(this));
+
+        _this.state = {
+            Title: "",
+            Subtitle: "",
+            Comment: "",
+            Name: ""
+        };
+
+        var self = _this;
+        _reactNative.AsyncStorage.getItem('info', function (err, result) {
+            _reactNative.Alert.alert('title', result);
+            var data = JSON.parse(result);
+            self.state.Title = data.Title;
+        });
+        return _this;
+    }
+
+    babelHelpers.createClass(Storage, [{
+        key: 'changeTitle',
+        value: function changeTitle(Title) {
+            this.setState({
+                Title: Title
+            });
+        }
+    }, {
+        key: 'changeSubtitle',
+        value: function changeSubtitle(Subtitle) {
+            this.setState({
+                Subtitle: Subtitle
+            });
+        }
+    }, {
+        key: 'changeComment',
+        value: function changeComment(Comment) {
+            this.setState({
+                Comment: Comment
+            });
+        }
+    }, {
+        key: 'changeName',
+        value: function changeName(Name) {
+            this.setState({
+                Name: Name
+            });
+        }
+    }, {
+        key: 'buttonPressed',
+        value: function buttonPressed() {
+            if (this.state.Comment) {
+                var data = {
+                    Title: this.state.Title,
+                    Comment: this.state.Comment,
+                    Subtitle: this.state.Subtitle,
+                    Name: this.state.Name
+
+                };
+
+                var test = JSON.stringify(data);
+
+                try {
+                    _reactNative.AsyncStorage.setItem('info', test);
+                } catch (error) {}
+            } else {
+                _reactNative.Alert.alert('ผิดพลาดก็คือ Error ไง');
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.container, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 93
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 94
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        { style: styles.title, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 95
+                            }
+                        },
+                        '\u0E1F\u0E2D\u0E23\u0E4C\u0E21 React-Native'
+                    ),
+                    _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+
+                        placeholder: 'key1',
+                        value: this.state.title,
+                        onChangeText: function onChangeText(title) {
+                            return _this2.changeTitle(title);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 98
+                        }
+                    }),
+                    _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                        placeholder: 'key2',
+                        value: this.state.Subtitle,
+                        onChangeText: function onChangeText(Subtitle) {
+                            return _this2.changeSubtitle(Subtitle);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 104
+                        }
+                    }),
+                    _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                        placeholder: 'key3',
+                        value: this.state.Comment,
+                        onChangeText: function onChangeText(Comment) {
+                            return _this2.changeComment(Comment);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 109
+                        }
+                    }),
+                    _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                        placeholder: 'key4',
+                        value: this.state.Name,
+                        onChangeText: function onChangeText(Name) {
+                            return _this2.changeName(Name);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 114
+                        }
+                    }),
+                    _react2.default.createElement(
+                        _reactNative.TouchableHighlight,
+                        {
+                            style: styles.button,
+                            onPress: function onPress() {
+                                return _this2.buttonPressed();
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 120
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { style: styles.textButton, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 124
+                                }
+                            },
+                            '\u0E01\u0E14\u0E2A\u0E34\u0E23\u0E2D\u0E43\u0E04\u0E23\u0E15\u0E31\u0E14\u0E25\u0E34\u0E1A\u0E1A\u0E34\u0E49\u0E19'
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+    return Storage;
+}(_react.Component);
+
+exports.default = Storage;
+
+
+var styles = _reactNative.StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 30,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        backgroundColor: '#FF99CC'
+    },
+
+    button: {
+        backgroundColor: 'skyblue',
+        paddingTop: 15,
+        paddingBottom: 15
+    },
+    textButton: {
+        textAlign: 'center',
+        color: 'white'
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 18,
+        marginBottom: 5
+
+    },
+    input: {
+        height: 40,
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 20
+    },
+    textArea: {
+        height: 60
+    }
+});
+
+_reactNative.AppRegistry.registerComponent('Storage', function () {
+    return Storage;
+});

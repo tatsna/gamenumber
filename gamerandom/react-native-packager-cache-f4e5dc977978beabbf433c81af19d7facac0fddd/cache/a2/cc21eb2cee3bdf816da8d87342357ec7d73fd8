@@ -1,0 +1,160 @@
+Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName="/home/perdto/test2/component/Pushtest/Testpush.js";var _react=require("react");var _react2=babelHelpers.interopRequireDefault(_react);
+var _reactNative=require("react-native");
+var _PushController=require("./PushController");var _PushController2=babelHelpers.interopRequireDefault(_PushController);
+var _reactNativePushNotification=require("react-native-push-notification");var _reactNativePushNotification2=babelHelpers.interopRequireDefault(_reactNativePushNotification);var
+
+Testpush=function(_Component){babelHelpers.inherits(Testpush,_Component);
+function Testpush(){babelHelpers.classCallCheck(this,Testpush);var _this=babelHelpers.possibleConstructorReturn(this,(Testpush.__proto__||Object.getPrototypeOf(Testpush)).call(this));
+
+
+_this.state={
+num:"",
+numrandom:"",
+apikey:"00000000-0000-0000-0000-000000000000"};return _this;
+
+}
+
+//เมตอด ชือ fetchusers
+babelHelpers.createClass(Testpush,[{key:"StartGame",value:function StartGame(){var _this2=this;
+// ไปที่เว็ป perdto json
+fetch('https://www.random.org/integers/?num=1&min=1000&max=9999&col=1&base=10&format=plain&rnd=new&api=',this.state.apikey)
+//กำหนดค่า parameter ให้ดึงข้อมูล Json เข้ามาเก็บ
+.then(function(response){return response.json();})
+//การกำหนดค่า parameter คือ response
+.then(function(response){
+_this2.setState({
+numrandom:response});
+
+alert("Ready Game");
+});
+}},{key:"StartNewGame",value:function StartNewGame()
+
+{var _this3=this;
+// ไปที่เว็ป perdto json
+fetch('https://www.random.org/integers/?num=1&min=1000&max=9999&col=1&base=10&format=plain&rnd=new&api=',this.state.apikey)
+//กำหนดค่า parameter ให้ดึงข้อมูล Json เข้ามาเก็บ
+.then(function(response){return response.json();})
+//การกำหนดค่า parameter คือ response
+.then(function(response){
+_this3.setState({
+numrandom:response});
+
+alert("New Game!!!");
+});
+}},{key:"changeNumber",value:function changeNumber(
+
+num){
+this.setState({
+num:num});
+
+}},{key:"loseGame",value:function loseGame()
+
+{
+alert(this.state.numrandom);
+}},{key:"OnClick",value:function OnClick()
+
+{
+if(this.state.numrandom==""){
+alert("Press the button StartGame!!");
+}else
+if(this.state.num==this.state.numrandom){
+alert("The Winner !!!!");
+this.StartNewGame();
+}else if(this.state.num>this.state.numrandom){
+alert("Too Much");
+}else if(this.state.num<this.state.numrandom){
+alert("Too Less");
+}
+}},{key:"render",value:function render()
+
+{var _this4=this;
+return(
+_react2.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:72}},
+
+_react2.default.createElement(_reactNative.TouchableHighlight,{
+style:styles.botton3,
+onPress:function onPress(){return _this4.StartGame();},__source:{fileName:_jsxFileName,lineNumber:74}},
+
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:78}}," StartGame!!! ")),
+
+_react2.default.createElement(_reactNative.Text,{style:styles.text1,__source:{fileName:_jsxFileName,lineNumber:80}},"Range 1000 - 9999"),
+_react2.default.createElement(_reactNative.TextInput,{style:styles.input,
+placeholder:"number",
+value:this.state.num,
+onChangeText:function onChangeText(num){return _this4.changeNumber(num);},__source:{fileName:_jsxFileName,lineNumber:81}}),
+
+_react2.default.createElement(_reactNative.TouchableHighlight,{
+style:styles.botton,
+onPress:function onPress(){return _this4.OnClick();},__source:{fileName:_jsxFileName,lineNumber:86}},
+
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:90}},"   PLAY    ")),
+
+
+
+_react2.default.createElement(_reactNative.TouchableHighlight,{
+style:styles.botton2,
+onPress:function onPress(){return _this4.loseGame();},__source:{fileName:_jsxFileName,lineNumber:94}},
+
+_react2.default.createElement(_reactNative.Text,{__source:{fileName:_jsxFileName,lineNumber:98}},"   Answer   "))));
+
+
+
+}}]);return Testpush;}(_react.Component);exports.default=Testpush;
+
+
+
+var styles=_reactNative.StyleSheet.create({
+h1:{
+marginTop:15,
+height:40,
+marginBottom:20,
+fontSize:15},
+
+input:{
+height:100,
+marginBottom:20,
+borderBottomWidth:1},
+
+
+container:{
+flex:1,
+
+padding:30,
+justifyContent:"center",
+alignItems:"stretch",
+backgroundColor:"#00ffff"},
+
+
+botton:{
+backgroundColor:'green',
+marginTop:5,
+paddingTop:15,
+paddingBottom:15},
+
+botton3:{
+marginTop:50,
+backgroundColor:'blue',
+paddingTop:15,
+paddingBottom:15},
+
+botton2:{
+backgroundColor:'red',
+marginTop:150,
+paddingTop:15,
+paddingBottom:15},
+
+picker:{
+width:100},
+
+text1:{
+marginTop:15,
+height:40,
+borderColor:'#ccc',
+borderWidth:2,
+marginBottom:20,
+alignItems:"stretch"}});
+
+
+
+
+_reactNative.AppRegistry.registerComponent('Testpush',function(){return Testpush;});

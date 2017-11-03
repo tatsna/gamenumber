@@ -1,0 +1,173 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Project2/Post.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNavigation = require('react-navigation');
+
+var Post = function (_Component) {
+    babelHelpers.inherits(Post, _Component);
+
+    function Post() {
+        babelHelpers.classCallCheck(this, Post);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).call(this));
+
+        _this.state = {
+            title: "",
+            content: ""
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(Post, [{
+        key: 'changeTitle',
+        value: function changeTitle(title) {
+            this.setState({
+                title: title
+            });
+        }
+    }, {
+        key: 'changContent',
+        value: function changContent(content) {
+            this.setState({
+                content: content
+            });
+        }
+    }, {
+        key: 'onPress',
+        value: function onPress() {
+
+            var data = new FormData();
+            data.append("title", this.state.title);
+            data.append("content", this.state.content);
+
+            fetch('http://webbord.com/index.php/main_controller/add', {
+                method: 'POST',
+                headers: {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'multipart/form-data'
+                    }
+                },
+                body: data
+            });
+
+            _reactNative.Alert.alert("POST", "สำเร็จ");
+            var navigate = this.props.navigation.navigate;
+
+            navigate('Home');
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.container, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 53
+                    }
+                },
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                    placeholder: 'title',
+                    value: this.state.title,
+                    onChangeText: function onChangeText(title) {
+                        return _this2.changeTitle(title);
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 54
+                    }
+                }),
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                    multiline: true,
+                    placeholder: 'content',
+                    value: this.state.content,
+                    onChangeText: function onChangeText(content) {
+                        return _this2.changContent(content);
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 59
+                    }
+                }),
+                _react2.default.createElement(
+                    _reactNative.TouchableHighlight,
+                    {
+                        style: styles.botton,
+                        onPress: function onPress() {
+                            return _this2.onPress();
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 66
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 70
+                            }
+                        },
+                        '\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25'
+                    )
+                )
+            );
+        }
+    }]);
+    return Post;
+}(_react.Component);
+
+Post.navigationOptions = {
+    title: "เพิ่มกระทู้"
+};
+exports.default = Post;
+
+
+var styles = _reactNative.StyleSheet.create({
+    styles: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1
+    },
+    container: {
+        flex: 1,
+        padding: 30,
+        justifyContent: "center",
+        alignItems: "stretch",
+        backgroundColor: "#00ffff"
+
+    },
+
+    botton: {
+        backgroundColor: 'red',
+        paddingTop: 15,
+        paddingBottom: 15
+    },
+    text1: {
+        height: 40,
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 20
+    },
+    input: {
+        height: 100,
+        marginBottom: 20,
+        borderBottomWidth: 1
+
+    }
+});
+
+_reactNative.AppRegistry.registerComponent('Post', function () {
+    return Post;
+});

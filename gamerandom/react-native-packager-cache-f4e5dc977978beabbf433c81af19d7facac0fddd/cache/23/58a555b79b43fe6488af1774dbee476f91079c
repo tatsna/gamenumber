@@ -1,0 +1,52 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Project/check.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var check = function (_Component) {
+  babelHelpers.inherits(check, _Component);
+
+  function check() {
+    babelHelpers.classCallCheck(this, check);
+    return babelHelpers.possibleConstructorReturn(this, (check.__proto__ || Object.getPrototypeOf(check)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(check, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactNative.View,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 18
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 19
+            }
+          },
+          'check'
+        )
+      );
+    }
+  }]);
+  return check;
+}(_react.Component);
+
+exports.default = check;
+
+
+_reactNative.AppRegistry.registerComponent('check', function () {
+  return check;
+});

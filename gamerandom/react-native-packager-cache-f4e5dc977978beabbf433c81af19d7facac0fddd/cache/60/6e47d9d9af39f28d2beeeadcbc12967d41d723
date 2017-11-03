@@ -1,0 +1,220 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Teststyle/Posttest.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNavigation = require('react-navigation');
+
+var Posttest = function (_Component) {
+    babelHelpers.inherits(Posttest, _Component);
+
+    function Posttest() {
+        babelHelpers.classCallCheck(this, Posttest);
+        return babelHelpers.possibleConstructorReturn(this, (Posttest.__proto__ || Object.getPrototypeOf(Posttest)).apply(this, arguments));
+    }
+
+    babelHelpers.createClass(Posttest, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.container, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 9
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Image,
+                    { source: require('../img/bg2.jpg'), style: styles.backgroundImage, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 10
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { style: styles.content, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 11
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { style: styles.logo, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 12
+                                }
+                            },
+                            ' --\u0E42\u0E1E\u0E2A\u0E01\u0E23\u0E30\u0E17\u0E39\u0E49-- '
+                        ),
+                        _react2.default.createElement(
+                            _reactNative.View,
+                            { style: styles.inputContainer, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 14
+                                }
+                            },
+                            _react2.default.createElement(_reactNative.TextInput, {
+                                underlineColorAndroid: 'transparent',
+                                style: styles.input,
+                                placeholder: 'TITLE', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 15
+                                }
+                            }),
+                            _react2.default.createElement(_reactNative.TextInput, {
+                                underlineColorAndroid: 'transparent',
+                                style: styles.input2,
+                                multiline: true,
+                                numberOfLines: 5,
+                                placeholder: 'CONTENT', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 20
+                                }
+                            })
+                        ),
+                        _react2.default.createElement(
+                            _reactNative.View,
+                            { style: styles.Containerbutton, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 29
+                                }
+                            },
+                            _react2.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                    onPress: this.login,
+                                    style: styles.buttonContainer, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 30
+                                    }
+                                },
+                                _react2.default.createElement(
+                                    _reactNative.Text,
+                                    { style: styles.buttonText, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 33
+                                        }
+                                    },
+                                    ' \u0E15\u0E31\u0E49\u0E07\u0E01\u0E23\u0E30\u0E17\u0E39\u0E49 '
+                                )
+                            ),
+                            _react2.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                    onPress: this.login,
+                                    style: styles.buttonContainer, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 35
+                                    }
+                                },
+                                _react2.default.createElement(
+                                    _reactNative.Text,
+                                    { style: styles.buttonText, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 38
+                                        }
+                                    },
+                                    ' \u0E22\u0E01\u0E40\u0E25\u0E34\u0E01 '
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+    return Posttest;
+}(_react.Component);
+
+exports.default = Posttest;
+
+
+var styles = _reactNative.StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+        width: '100%'
+    },
+
+    container: {
+        flex: 1
+
+    },
+
+    content: {
+        alignItems: 'center'
+
+    },
+
+    logo: {
+        color: 'white',
+        fontSize: 50,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        textShadowColor: '#ffa500',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 15,
+        marginBottom: 20,
+        marginTop: 20
+    },
+    inputContainer: {
+        margin: 20,
+        marginBottom: 0,
+        padding: 20,
+        paddingBottom: 10,
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.2)'
+    },
+    input: {
+        fontSize: 30,
+        height: 50,
+        padding: 10,
+        marginBottom: 10,
+        backgroundColor: 'rgba(255,255,255,1)'
+    },
+    input2: {
+        fontSize: 25,
+        height: 200,
+        padding: 10,
+        marginBottom: 20,
+        marginTop: 20,
+        marginRight: 15,
+        marginLeft: 15,
+        backgroundColor: 'rgba(255,255,255,1)'
+    },
+    buttonContainer: {
+        alignSelf: 'stretch',
+        margin: 20,
+        padding: 20,
+        borderColor: '#fff',
+        backgroundColor: '#ffa500'
+    },
+    buttonText: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: "#fdf5e6"
+    },
+    Containerbutton: {
+        margin: 20,
+        marginBottom: 0,
+        padding: 20,
+        paddingBottom: 10,
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.2)'
+    }
+});
+
+_reactNative.AppRegistry.registerComponent('Posttest', function () {
+    return Posttest;
+});

@@ -1,0 +1,81 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
+
+var WS = function (_Component) {
+  babelHelpers.inherits(WS, _Component);
+
+  function WS() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    babelHelpers.classCallCheck(this, WS);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = babelHelpers.possibleConstructorReturn(this, (_ref = WS.__proto__ || Object.getPrototypeOf(WS)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      ws: null
+    }, _this.send = function (data) {
+      return _this.state.ws.send(data);
+    }, _this._handleWebSocketSetup = function () {
+      var ws = new WebSocket(_this.props.url);
+      ws.onopen = function () {
+        _this.props.onOpen && _this.props.onOpen();
+      };
+      ws.onmessage = function (event) {
+        _this.props.onMessage && _this.props.onMessage(event);
+      };
+      ws.onerror = function (error) {
+        _this.props.onError && _this.props.onError(error);
+      };
+      ws.onclose = function () {
+        return _this.reconnect ? _this._handleWebsocketSetup() : _this.props.onClose && _this.props.onClose();
+      };
+      _this.setState({ ws: ws });
+    }, _temp), babelHelpers.possibleConstructorReturn(_this, _ret);
+  }
+
+  babelHelpers.createClass(WS, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.reconnect = !!this.props.reconnect;
+      this._handleWebSocketSetup();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.reconnect = false;
+      this.state.ws.close();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return null;
+    }
+  }]);
+  return WS;
+}(_react.Component);
+
+WS.defaultProps = {
+  reconnect: false
+};
+WS.propTypes = {
+  url: _propTypes2.default.string.isRequired,
+  reconnect: _propTypes2.default.bool,
+  onOpen: _propTypes2.default.func,
+  onMessage: _propTypes2.default.func,
+  onError: _propTypes2.default.func,
+  onClose: _propTypes2.default.func
+};
+exports.default = WS;

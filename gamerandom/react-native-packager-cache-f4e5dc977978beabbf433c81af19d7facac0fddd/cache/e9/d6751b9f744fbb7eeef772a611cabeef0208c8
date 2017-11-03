@@ -1,0 +1,185 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Component2/Component2.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var Component2 = function (_Component) {
+    babelHelpers.inherits(Component2, _Component);
+
+    function Component2() {
+        babelHelpers.classCallCheck(this, Component2);
+        return babelHelpers.possibleConstructorReturn(this, (Component2.__proto__ || Object.getPrototypeOf(Component2)).apply(this, arguments));
+    }
+
+    babelHelpers.createClass(Component2, [{
+        key: 'onPress',
+        value: function onPress() {
+            console.log('Area Pressed');
+        }
+    }, {
+        key: 'onPress',
+        value: function onPress() {
+            console.log('Area Pressed 2');
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 15
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.View,
+                    { style: styles.myView, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 16
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        { style: styles.myText, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 17
+                            }
+                        },
+                        'Hello Spatar'
+                    )
+                ),
+                _react2.default.createElement(
+                    _reactNative.View,
+                    { style: styles.container, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 19
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.TouchableHighlight,
+                        {
+                            style: styles.v1,
+                            onPress: this.onPress,
+                            underlayColor: 'blue',
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 20
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.View,
+                            { style: styles.v1, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 25
+                                }
+                            },
+                            _react2.default.createElement(
+                                _reactNative.Text,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 26
+                                    }
+                                },
+                                'View 1 '
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactNative.TouchableHighlight,
+                        {
+                            style: styles.v2,
+                            onPress: this.onPress, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 29
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.View,
+                            { style: styles.v2, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 32
+                                }
+                            },
+                            _react2.default.createElement(
+                                _reactNative.Text,
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 33
+                                    }
+                                },
+                                'View 2 '
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { style: styles.v3, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 36
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { style: styles.vText, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 37
+                                }
+                            },
+                            'View 3 '
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+    return Component2;
+}(_react.Component);
+
+exports.default = Component2;
+
+
+var styles = _reactNative.StyleSheet.create({
+    myView: {
+        backgroundColor: 'blue'
+    },
+    myText: {
+        color: 'white'
+    },
+    container: {
+        flexDirection: 'row',
+        height: 100
+    },
+    v1: {
+        flex: 1,
+        backgroundColor: 'green',
+        padding: 10
+    },
+    v2: {
+        flex: 1,
+        backgroundColor: 'red',
+        padding: 10
+    },
+
+    v3: {
+        flex: 1,
+        backgroundColor: 'black',
+        padding: 10
+    },
+    vText: {
+        color: 'white'
+    }
+
+});
+
+_reactNative.AppRegistry.registerComponent('Component2', function () {
+    return Component2;
+});

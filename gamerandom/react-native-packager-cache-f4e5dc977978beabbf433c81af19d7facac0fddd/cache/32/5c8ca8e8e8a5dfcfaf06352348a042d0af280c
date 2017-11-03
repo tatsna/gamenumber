@@ -1,0 +1,18 @@
+Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName="/home/perdto/test2/index.android.js";var _react=require("react");var _react2=babelHelpers.interopRequireDefault(_react);
+var _reactNative=require("react-native");
+var _reactNativeWebsocket=require("react-native-websocket");var _reactNativeWebsocket2=babelHelpers.interopRequireDefault(_reactNativeWebsocket);
+var _reactNativePushNotification=require("react-native-push-notification");var _reactNativePushNotification2=babelHelpers.interopRequireDefault(_reactNativePushNotification);
+
+var _Testpush=require("./component/Pushtest/Testpush");var _Testpush2=babelHelpers.interopRequireDefault(_Testpush);
+var _PushController=require("./component/Pushtest/PushController");var _PushController2=babelHelpers.interopRequireDefault(_PushController);var
+
+test2=function(_Component){babelHelpers.inherits(test2,_Component);function test2(){babelHelpers.classCallCheck(this,test2);return babelHelpers.possibleConstructorReturn(this,(test2.__proto__||Object.getPrototypeOf(test2)).apply(this,arguments));}babelHelpers.createClass(test2,[{key:"render",value:function render()
+
+{
+return(
+_react2.default.createElement(_Testpush2.default,{__source:{fileName:_jsxFileName,lineNumber:13}}));
+
+}}]);return test2;}(_react.Component);exports.default=test2;
+
+
+_reactNative.AppRegistry.registerComponent('test2',function(){return test2;});

@@ -1,0 +1,70 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Livescore/Table.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var Home = function (_Component) {
+    babelHelpers.inherits(Home, _Component);
+
+    function Home() {
+        babelHelpers.classCallCheck(this, Home);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+        var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                return r1 !== r2;
+            } });
+        _this.state = {
+            userDataSource: ds
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(Home, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.fetchusers();
+        }
+    }, {
+        key: 'fetchusers',
+        value: function fetchusers() {
+            var _this2 = this;
+
+            fetch('http://api.football-data.org/v1/competitions/446/leagueTable').then(function (response) {
+                return response.json();
+            }).then(function (response) {
+                console.log("test", response);
+                _this2.setState({
+                    userDataSource: _this2.state.userDataSource.cloneWithRows(response)
+                });
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(_reactNative.View, {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 57
+                }
+            });
+        }
+    }]);
+    return Home;
+}(_react.Component);
+
+exports.default = Home;
+
+
+var styles = _reactNative.StyleSheet.create({
+    container: {},
+    list: {},
+
+    button: {}
+});

@@ -1,0 +1,101 @@
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ReactNativeFiberHostComponent
+ * 
+ * @preventMunge
+ */
+
+'use strict';
+
+var ReactNativeAttributePayload=require('ReactNativeAttributePayload');
+var TextInputState=require('TextInputState');
+var UIManager=require('UIManager');var _require=
+
+require('NativeMethodsMixinUtils'),mountSafeCallback=_require.mountSafeCallback,warnForStyleProps=_require.warnForStyleProps;
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * This component defines the same methods as NativeMethodsMixin but without the
+ * findNodeHandle wrapper. This wrapper is unnecessary for HostComponent views
+ * and would also result in a circular require.js dependency (since
+ * ReactNativeFiber depends on this component and NativeMethodsMixin depends on
+ * ReactNativeFiber).
+ */var
+ReactNativeFiberHostComponent=function(){
+
+
+
+
+function ReactNativeFiberHostComponent(tag,viewConfig){babelHelpers.classCallCheck(this,ReactNativeFiberHostComponent);
+this._nativeTag=tag;
+this._children=[];
+this.viewConfig=viewConfig;
+}babelHelpers.createClass(ReactNativeFiberHostComponent,[{key:"blur",value:function blur()
+
+{
+TextInputState.blurTextInput(this._nativeTag);
+}},{key:"focus",value:function focus()
+
+{
+TextInputState.focusTextInput(this._nativeTag);
+}},{key:"measure",value:function measure(
+
+callback){
+UIManager.measure(this._nativeTag,mountSafeCallback(this,callback));
+}},{key:"measureInWindow",value:function measureInWindow(
+
+callback){
+UIManager.measureInWindow(
+this._nativeTag,
+mountSafeCallback(this,callback));
+
+}},{key:"measureLayout",value:function measureLayout(
+
+
+relativeToNativeNode,
+onSuccess,
+onFail/* currently unused */)
+{
+UIManager.measureLayout(
+this._nativeTag,
+relativeToNativeNode,
+mountSafeCallback(this,onFail),
+mountSafeCallback(this,onSuccess));
+
+}},{key:"setNativeProps",value:function setNativeProps(
+
+nativeProps){
+{
+warnForStyleProps(nativeProps,this.viewConfig.validAttributes);
+}
+
+var updatePayload=ReactNativeAttributePayload.create(
+nativeProps,
+this.viewConfig.validAttributes);
+
+
+UIManager.updateView(
+this._nativeTag,
+this.viewConfig.uiViewClassName,
+updatePayload);
+
+}}]);return ReactNativeFiberHostComponent;}();
+
+
+module.exports=ReactNativeFiberHostComponent;

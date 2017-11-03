@@ -1,0 +1,319 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Teststyle/Hometest.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNavigation = require('react-navigation');
+
+var Home = function (_Component) {
+    babelHelpers.inherits(Home, _Component);
+
+    function Home() {
+        babelHelpers.classCallCheck(this, Home);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+        var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                return r1 !== r2;
+            } });
+        _this.state = {
+            userDataSource: ds,
+            refreshing: false
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(Home, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.fetchusers();
+        }
+    }, {
+        key: 'fetchusers',
+        value: function fetchusers() {
+            var _this2 = this;
+
+            this.setState({ refreshing: true });
+            fetch('http://webbord.com/index.php/main_controller/json/').then(function (response) {
+                return response.json();
+            }).then(function (response) {
+                _this2.setState({
+                    userDataSource: _this2.state.userDataSource.cloneWithRows(response.rs),
+                    refreshing: false
+                });
+            });
+        }
+    }, {
+        key: 'renderRow',
+        value: function renderRow(from) {
+            var navigate = this.props.navigation.navigate;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 37
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.TouchableHighlight,
+                    {
+                        onPress: function onPress() {
+                            return navigate('View', { id: from.id });
+                        },
+                        style: styles.buttonContainer, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 38
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        { style: styles.buttonText, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 41
+                            }
+                        },
+                        ' ',
+                        from.title,
+                        ' '
+                    )
+                )
+            );
+        }
+    }, {
+        key: 'buttonPress',
+        value: function buttonPress() {
+            var navigate = this.props.navigation.navigate;
+
+            navigate('Post');
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var navigate = this.props.navigation.navigate;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.container, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 55
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Image,
+                    { source: require('../img/bg2.jpg'), style: styles.backgroundImage, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 56
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.View,
+                        { style: styles.content, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 57
+                            }
+                        },
+                        _react2.default.createElement(
+                            _reactNative.Text,
+                            { style: styles.logo, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 58
+                                }
+                            },
+                            ' --\u0E01\u0E23\u0E30\u0E17\u0E39\u0E49\u0E17\u0E31\u0E49\u0E07\u0E2B\u0E21\u0E14-- '
+                        ),
+                        _react2.default.createElement(
+                            _reactNative.TouchableHighlight,
+                            {
+                                onPress: function onPress() {
+                                    return _this3.buttonPress();
+                                },
+                                style: styles.buttonContainer, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 59
+                                }
+                            },
+                            _react2.default.createElement(
+                                _reactNative.Text,
+                                { style: styles.buttonText, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 62
+                                    }
+                                },
+                                ' \u0E15\u0E31\u0E49\u0E07\u0E01\u0E23\u0E30\u0E17\u0E39\u0E49 '
+                            )
+                        ),
+                        _react2.default.createElement(_reactNative.ListView, {
+                            style: styles.listview,
+                            refreshControl: _react2.default.createElement(_reactNative.RefreshControl, {
+                                refreshing: this.state.refreshing,
+                                onRefresh: this.fetchusers.bind(this),
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 67
+                                }
+                            }),
+                            dataSource: this.state.userDataSource,
+                            renderRow: this.renderRow.bind(this),
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 64
+                            }
+                        }),
+                        _react2.default.createElement(
+                            _reactNative.View,
+                            { style: styles.inputContainer, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 75
+                                }
+                            },
+                            _react2.default.createElement(_reactNative.TextInput, {
+                                ref: function ref(component) {
+                                    return _this3._textInput = component;
+                                },
+                                placeholder: '\u0E0A\u0E37\u0E48\u0E2D',
+                                value: this.state.name,
+                                onChangeText: function onChangeText(name) {
+                                    return _this3.changeName(name);
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 76
+                                }
+                            }),
+                            _react2.default.createElement(_reactNative.TextInput, {
+                                ref: function ref(component) {
+                                    return _this3._textInput2 = component;
+                                },
+                                placeholder: '\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14',
+                                value: this.state.magsage,
+                                onChangeText: function onChangeText(magsage) {
+                                    return _this3.changeMegsage(magsage);
+                                },
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 82
+                                }
+                            }),
+                            _react2.default.createElement(
+                                _reactNative.TouchableHighlight,
+                                {
+                                    style: styles.botton,
+                                    onPress: function onPress() {
+                                        return _this3.onPress();
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 89
+                                    }
+                                },
+                                _react2.default.createElement(
+                                    _reactNative.Text,
+                                    {
+                                        __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 93
+                                        }
+                                    },
+                                    '\u0E15\u0E2D\u0E1A\u0E01\u0E25\u0E31\u0E1A'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+    return Home;
+}(_react.Component);
+
+exports.default = Home;
+
+
+var styles = _reactNative.StyleSheet.create({
+
+    listview: {
+        marginTop: 15,
+        marginBottom: "30%",
+        margin: 20,
+        padding: 20,
+        paddingBottom: 20,
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.2)'
+    },
+    backgroundImage: {
+        flex: 1,
+        alignSelf: 'stretch',
+        width: '100%'
+    },
+
+    container: {
+        flex: 1
+
+    },
+
+    content: {
+        alignItems: 'center'
+
+    },
+
+    logo: {
+        color: 'white',
+        fontSize: 50,
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        textShadowColor: '#ffa500',
+        textShadowOffset: { width: 2, height: 2 },
+        textShadowRadius: 15,
+        marginBottom: 20,
+        marginTop: 20
+    },
+    inputContainer: {
+        margin: 20,
+        marginBottom: 0,
+        padding: 20,
+        paddingBottom: 10,
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.2)'
+    },
+    buttonContainer: {
+        alignSelf: 'stretch',
+        margin: 5,
+        padding: 5,
+        borderColor: '#fff',
+        backgroundColor: '#ffa500'
+    },
+    buttonText: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: "#fdf5e6"
+    },
+    Containerbutton: {
+        margin: 20,
+        marginBottom: 0,
+        padding: 20,
+        paddingBottom: 10,
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        borderColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.2)'
+    }
+});
+
+_reactNative.AppRegistry.registerComponent('Home', function () {
+    return Home;
+});

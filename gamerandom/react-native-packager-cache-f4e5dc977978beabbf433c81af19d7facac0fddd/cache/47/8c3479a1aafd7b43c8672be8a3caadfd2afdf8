@@ -1,0 +1,47 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNativePushNotification = require('react-native-push-notification');
+
+var _reactNativePushNotification2 = babelHelpers.interopRequireDefault(_reactNativePushNotification);
+
+var PushController = function (_Component) {
+    babelHelpers.inherits(PushController, _Component);
+
+    function PushController() {
+        babelHelpers.classCallCheck(this, PushController);
+        return babelHelpers.possibleConstructorReturn(this, (PushController.__proto__ || Object.getPrototypeOf(PushController)).apply(this, arguments));
+    }
+
+    babelHelpers.createClass(PushController, [{
+        key: 'componentDidmount',
+        value: function componentDidmount() {
+            _reactNativePushNotification2.default.configure({
+                onNotification: function onNotification(notification) {
+                    console.log('NOTIFICATION:', notification);
+                }
+
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return null;
+        }
+    }]);
+    return PushController;
+}(_react.Component);
+
+exports.default = PushController;
+
+
+_reactNative.AppRegistry.registerComponent('test', function () {
+    return test;
+});

@@ -1,0 +1,324 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Teststyle/Showtest.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNavigation = require('react-navigation');
+
+var Showtest = function (_Component) {
+    babelHelpers.inherits(Showtest, _Component);
+
+    function Showtest() {
+        babelHelpers.classCallCheck(this, Showtest);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Showtest.__proto__ || Object.getPrototypeOf(Showtest)).call(this));
+
+        var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+                return r1 !== r2;
+            } });
+        _this.data_list = [];
+        _this.state = {
+            title: "",
+            content: "",
+            name: "",
+            megsage: "",
+            userDataSource: ds,
+            refreshing: false
+        };
+        return _this;
+    }
+
+    babelHelpers.createClass(Showtest, [{
+        key: 'fetchID',
+        value: function fetchID() {
+            var _this2 = this;
+
+            return fetch('http://webbord.com/index.php/main_controller/jsonid/' + this.props.navigation.state.params.id).then(function (response) {
+                return response.json();
+            }).then(function (responseJson) {
+                _this2.setState({
+                    title: responseJson.ta.title,
+                    content: responseJson.ta.content
+                });
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.fetchmessage();
+            this.fetchID();
+            this.setInterval(function () {
+                return fetchmessage();
+            }, 1000);
+        }
+    }, {
+        key: 'fetchmessage',
+        value: function fetchmessage() {
+            var _this3 = this;
+
+            fetch('http://webbord.com/index.php/main_controller/jsonmessage/' + this.props.navigation.state.params.id).then(function (response) {
+                return response.json();
+            }).then(function (response) {
+                if (response.ms.length > 0) {
+                    _this3.data_list = response.ms;
+                    _this3.setState({
+                        userDataSource: _this3.state.userDataSource.cloneWithRows(_this3.data_list)
+                    });
+                } else {}
+            });
+        }
+    }, {
+        key: 'changeName',
+        value: function changeName(name) {
+            this.setState({
+                name: name
+            });
+        }
+    }, {
+        key: 'changeMegsage',
+        value: function changeMegsage(megsage) {
+            this.setState({
+                megsage: megsage
+            });
+        }
+    }, {
+        key: 'onPress',
+        value: function onPress() {
+            var _this4 = this;
+
+            var data = new FormData();
+            data.append("id_ct", this.props.navigation.state.params.id);
+            data.append("name_ct", this.state.name);
+            data.append("text_ct", this.state.megsage);
+
+            fetch('http://webbord.com/index.php/main_controller/addmessage', {
+                method: 'POST',
+                headers: {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'multipart/form-data'
+                    }
+                },
+
+                body: data
+            }).then(function (response) {
+                return response.json();
+            }).then(function (response) {
+                if (response !== 0) {
+                    _this4.onDataArrived(response);
+                }
+            });
+            this._textInput2.setNativeProps({ text: '' });
+        }
+    }, {
+        key: 'onDataArrived',
+        value: function onDataArrived(response) {
+            this.setState({ refreshing: true });
+            this.data_list.push(response);
+            this.setState({
+                userDataSource: this.state.userDataSource.cloneWithRows(this.data_list),
+                refreshing: false
+            });
+        }
+    }, {
+        key: 'renderRow',
+        value: function renderRow(ms) {
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: styles.row, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 117
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.rowText, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 118
+                        }
+                    },
+                    ' ',
+                    ms.text_ct
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: styles.rowText, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 119
+                        }
+                    },
+                    ' ',
+                    ms.name_ct
+                )
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this5 = this;
+
+            var navigate = this.props.navigation.navigate;
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 127
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 128
+                        }
+                    },
+                    this.state.title
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 129
+                        }
+                    },
+                    this.state.content
+                ),
+                _react2.default.createElement(_reactNative.ListView, {
+                    refreshControl: _react2.default.createElement(_reactNative.RefreshControl, {
+                        refreshing: this.state.refreshing,
+                        onRefresh: this.fetchmessage.bind(this),
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 132
+                        }
+                    }),
+                    dataSource: this.state.userDataSource,
+                    renderRow: this.renderRow.bind(this),
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 130
+                    }
+                }),
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                    ref: function ref(component) {
+                        return _this5._textInput = component;
+                    },
+                    placeholder: '\u0E0A\u0E37\u0E48\u0E2D',
+                    value: this.state.name,
+                    onChangeText: function onChangeText(name) {
+                        return _this5.changeName(name);
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 141
+                    }
+                }),
+                _react2.default.createElement(_reactNative.TextInput, { style: styles.input,
+                    ref: function ref(component) {
+                        return _this5._textInput2 = component;
+                    },
+                    placeholder: '\u0E23\u0E32\u0E22\u0E25\u0E30\u0E40\u0E2D\u0E35\u0E22\u0E14',
+                    value: this.state.magsage,
+                    onChangeText: function onChangeText(magsage) {
+                        return _this5.changeMegsage(magsage);
+                    },
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 147
+                    }
+                }),
+                _react2.default.createElement(
+                    _reactNative.TouchableHighlight,
+                    {
+                        style: styles.botton,
+                        onPress: function onPress() {
+                            return _this5.onPress();
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 154
+                        }
+                    },
+                    _react2.default.createElement(
+                        _reactNative.Text,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 158
+                            }
+                        },
+                        '\u0E15\u0E2D\u0E1A\u0E01\u0E25\u0E31\u0E1A'
+                    )
+                )
+            );
+        }
+    }]);
+    return Showtest;
+}(_react.Component);
+
+Showtest.navigationOptions = function (_ref) {
+    var navigation = _ref.navigation;
+    return {
+        title: '\u0E01\u0E25\u0E31\u0E1A\u0E44\u0E1B\u0E2B\u0E19\u0E49\u0E32\u0E40\u0E14\u0E34\u0E21 ' + navigation.state.params.id
+    };
+};
+
+exports.default = Showtest;
+
+
+var styles = _reactNative.StyleSheet.create({
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        padding: 10,
+        backgroundColor: '#f4f4f4',
+        marginBottom: 3
+
+    },
+    rowText: {
+        flex: 1,
+        fontSize: 20
+
+    },
+
+    botton: {
+        backgroundColor: 'blue',
+        paddingTop: 15,
+        paddingBottom: 15
+    },
+    styles: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1
+    },
+    container: {
+        flex: 1,
+        padding: 30,
+        justifyContent: "center",
+        alignItems: "stretch"
+
+    },
+    text1: {
+        height: 40,
+        borderColor: '#ccc',
+        borderWidth: 2,
+        marginBottom: 20
+    }
+
+});
+
+_reactNative.AppRegistry.registerComponent('Showtest', function () {
+    return Showtest;
+});

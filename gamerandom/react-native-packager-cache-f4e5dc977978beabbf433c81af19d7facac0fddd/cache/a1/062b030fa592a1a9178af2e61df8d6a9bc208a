@@ -1,0 +1,62 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Project2/post.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var post = function (_Component) {
+  babelHelpers.inherits(post, _Component);
+
+  function post() {
+    babelHelpers.classCallCheck(this, post);
+    return babelHelpers.possibleConstructorReturn(this, (post.__proto__ || Object.getPrototypeOf(post)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(post, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _reactNative.View,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 9
+          }
+        },
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 10
+            }
+          },
+          this.props.Message
+        ),
+        _react2.default.createElement(
+          _reactNative.Text,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 11
+            }
+          },
+          name
+        )
+      );
+    }
+  }]);
+  return post;
+}(_react.Component);
+
+exports.default = post;
+
+
+_reactNative.AppRegistry.registerComponent('test2', function () {
+  return test2;
+});

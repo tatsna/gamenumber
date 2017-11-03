@@ -1,0 +1,100 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/perdto/test2/component/Storage2/Storage2.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var Storage2 = function (_Component) {
+    babelHelpers.inherits(Storage2, _Component);
+
+    function Storage2() {
+        babelHelpers.classCallCheck(this, Storage2);
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Storage2.__proto__ || Object.getPrototypeOf(Storage2)).call(this));
+
+        _this.state = {
+            name: "tatsna",
+            lastname: "pradakorn",
+            age: "22"
+
+        };
+
+        var data = JSON.stringify(_this.state);
+
+        try {
+            _reactNative.AsyncStorage.setItem('info', data);
+        } catch (error) {}
+
+        _reactNative.AsyncStorage.getItem('info', function (err, result) {
+
+            var storage = JSON.parse(result);
+            _reactNative.Alert.alert("title", storage.name + "   " + storage.lastname + "  " + storage.age + " ");
+        });
+
+        return _this;
+    }
+
+    babelHelpers.createClass(Storage2, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 52
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 54
+                        }
+                    },
+                    ' ',
+                    this.state.name,
+                    ' '
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 55
+                        }
+                    },
+                    ' ',
+                    this.state.lastname,
+                    ' '
+                ),
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 56
+                        }
+                    },
+                    ' ',
+                    this.state.age,
+                    ' '
+                )
+            );
+        }
+    }]);
+    return Storage2;
+}(_react.Component);
+
+exports.default = Storage2;
+
+
+_reactNative.AppRegistry.registerComponent('test2', function () {
+    return test2;
+});
