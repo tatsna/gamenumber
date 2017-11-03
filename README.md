@@ -16,6 +16,7 @@ Random number games with random.org API using React-native
 5.	If the correct guess then the game will return to start.
 6.	If you give up, Press Answer !!!
 
+### Image
 
 1. File app.android
 ![indexandroid](https://user-images.githubusercontent.com/32328841/32362824-18af0f90-c03a-11e7-9bf3-464d43f8dd3e.png)
