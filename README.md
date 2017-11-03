@@ -26,6 +26,10 @@ Random number games with random.org API using React-native
 5.	If the correct guess then the game will return to start.
 6.	If you give up, Press Answer !!!
 
-
+![game3](https://user-images.githubusercontent.com/32328841/32364097-eee0d0b6-c040-11e7-9119-e8a14aeea0d4.png)
+![game4](https://user-images.githubusercontent.com/32328841/32364098-ef465422-c040-11e7-9b87-bd7897ebc5c6.png)
+![game5](https://user-images.githubusercontent.com/32328841/32364099-ef8c9b12-c040-11e7-85c1-88c01ee8ff05.png)
+![game1](https://user-images.githubusercontent.com/32328841/32364102-effa2ad8-c040-11e7-86a1-ba8145c52caf.png)
+![game2](https://user-images.githubusercontent.com/32328841/32364104-f03f60d0-c040-11e7-93bf-b06b2977164d.png)
 
 
