@@ -16,5 +16,4 @@ Random number games with random.org API using React-native
 5.	If the correct guess then the game will return to start.
 6.	If you give up, Press Answer !!!
 
-
-![alt text](hhttp://www.mx7.com/i/22b/FivOTx.png)
+![gamerandomfile1](https://user-images.githubusercontent.com/32328841/32362781-dd83f8e0-c039-11e7-842e-713e43f556ee.png)
